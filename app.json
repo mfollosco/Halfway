@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.halfway.hfh"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.halfway.hfh"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +33,9 @@
         "projectId": "71a3fca6-06f3-487b-8e2d-0c8f8f6eaa40"
       }
     },
-    "owner": "kararar"
+    "owner": "kararar",
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
