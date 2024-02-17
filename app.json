@@ -16,6 +16,7 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.halfway.hfh"
     },
     "android": {
@@ -23,6 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.halfway.hfh"
     },
     "web": {
@@ -35,7 +37,15 @@
     },
     "owner": "kararar",
     "plugins": [
-      "expo-build-properties"
+      "@react-native-firebase/app",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
     ]
   }
 }

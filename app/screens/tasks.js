@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
     fontSize: 28, 
   }, 
   heading2: {
-    marginTop: 20,
+    marginTop: 15,
+    marginBottom: 15,
     marginLeft: 20,
     fontSize: 35, 
     fontWeight: "bold", 
     color: "#110C48", 
   },
   taskList: {
-    marginTop: 20,
   },
   taskItem:{
     flexDirection: "row", 
