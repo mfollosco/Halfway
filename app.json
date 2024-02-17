@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Halfway",
-    "slug": "Halfway",
+    "slug": "test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "71a3fca6-06f3-487b-8e2d-0c8f8f6eaa40"
+      }
+    },
+    "owner": "kararar"
   }
 }
