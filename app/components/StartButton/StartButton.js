@@ -19,17 +19,15 @@ const styles = StyleSheet.create({
     width: 283,
     height: 225,
 
-    alignItems: 'center', 
     justifyContent: 'center',
-    borderRadius: 5, 
+    alignItems: 'center', 
     top: '20%',
     borderRadius: 30,
     left: '15%'
    },
 
    image1: {
-    maxWidth: '100%',
-    height: 'auto'
+    
    },
 
    text: {
