@@ -62,7 +62,7 @@ export default function AddTaskPage(){
     const geocodedLocation = await Location.geocodeAsync(address);
     console.log("Geocoded Address:");
     console.log(geocodedLocation);
-    let x = geocodedLocation;
+    // let x = geocodedLocation;
 
     if (geocodedLocation.length === 0) {
       Alert.alert('Invalid Address', 'Please enter a valid address.');
@@ -76,7 +76,7 @@ export default function AddTaskPage(){
     setDistance(distanceInMeters);
 
     database.collection("LocInput").add({
-        wordloc: x,
+        // wordloc: x,
         location: location.coords,
         address: geocodedLocation,
         distance: distanceInMeters
@@ -185,6 +185,8 @@ export default function AddTaskPage(){
         onChangeText={setAddress}
         placeholder='Enter Location'
       />
+      <Button title="Check Location" onPress={geocode}/>
+      <StatusBar style="auto"/>
 
       {/* <ImageBackground source={require('../../assets/images/topBannerImg.png')} style={styles.bottomBannerImg}> */}
       <View style = {styles.bottomSection}>
