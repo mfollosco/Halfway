@@ -6,7 +6,6 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 
 export default function AddTaskPage(){ 
   const [task, setTask] = useState(""); 
-
   const [locationType, setLocationType] = useState(true)
   const [taskTypeText, setTaskTypeText] = useState("Location")
   const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address:")
@@ -116,9 +115,7 @@ export default function AddTaskPage(){
         </View>
       </View>
       {/* </ImageBackground> */}
-    </View>
-        
-      
+    </View>    
   );
 };
 
