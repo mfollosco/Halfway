@@ -1,8 +1,9 @@
 
 import React, {useState, useEffect} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, TextInput, View, Alert, StyleSheet, Text, FlatList, Pressable  } from 'react-native';
+import { Button, TextInput, View, Alert, StyleSheet, Text, FlatList, Pressable} from 'react-native';
 import * as Location from 'expo-location';
+import {firebase} from '../config'
 
 const InputLocation = () => {
   const [location, setLocation] = useState(null);
@@ -26,6 +27,7 @@ const InputLocation = () => {
       console.log(currentLocation);
     };
     getPermissions();
+      
   }, []);
 
   const geocode = async () => {
@@ -33,7 +35,7 @@ const InputLocation = () => {
       console.log("Location not available yet");
       return;
     }
-
+    const database = firebase.firestore();
     const geocodedLocation = await Location.geocodeAsync(address);
     console.log("Geocoded Address:");
     console.log(geocodedLocation);
@@ -48,6 +50,18 @@ const InputLocation = () => {
 
     const distanceInMeters = getDistance(userLat, userLng, destLat, destLng);
     setDistance(distanceInMeters);
+
+    database.collection("LocInput").add({
+        location: location.coords,
+        address: geocodedLocation,
+        distance: distanceInMeters
+    })
+    .then((docRef) => {
+    console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+    console.error("Error adding document: ", error);
+    });
 
     Alert.alert(
       'Location Information',
