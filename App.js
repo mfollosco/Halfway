@@ -1,6 +1,11 @@
 import React, { useState } from "react"; 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import ChatbotApp from './chatbot.js';
+import axios from "axios";
 
 import TasksPage from './app/screens/tasks' 
 import AddTaskPage from "./app/screens/AddTask";
