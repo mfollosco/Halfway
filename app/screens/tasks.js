@@ -1,4 +1,5 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react"; 
+import {firebase} from '../../config'
 
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -14,6 +15,7 @@ import {
   StyleSheet, 
   Image,
   ImageBackground,
+  Pressable,
 } from "react-native"; 
   
 export default function TasksPage(){ 
@@ -21,8 +23,9 @@ export default function TasksPage(){
   const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
   const [editIndex, setEditIndex] = useState(-1); 
 
+  const [users, setUsers] = useState([]);
+  const todoRef = firebase.firestore().collection('Task');
 
-  
   // const app = initializeApp(firebaseConfig);
   // const analytics = getAnalytics(app);
 
@@ -42,6 +45,28 @@ export default function TasksPage(){
     // } 
   }; 
 
+  useEffect(async () => {
+    (async () => {
+      todoRef
+      .onSnapshot(
+        querySnapshot => {
+          const users = []
+          querySnapshot.forEach((doc) => {
+            // const {taskName} = doc.data()
+            const {CompletionTimes, location, taskName} = doc.data()
+            users.push({
+              id: doc.id,
+              taskName,
+            })
+          })
+          setUsers(users)
+        }
+      )
+      //Put your logic here
+      return () => {}
+    })();
+  }, [])
+
   const handleEditTask = (index) => { 
     const taskToEdit = tasks[index]; 
     setTask(taskToEdit); 
@@ -54,21 +79,28 @@ export default function TasksPage(){
   //   setTasks(updatedTasks); 
   // }; 
 
-  const renderItem = ({ item, index }) => ( 
-    <View style={styles.taskItem}> 
-      <View style={styles.task}>
-        <Text style={styles.taskText}>{item}</Text> 
-      </View>
-      <View 
-        style={styles.taskButtons}> 
-        <TouchableOpacity 
-          style={styles.viewTaskBtn} 
-          onPress={() => handleEditTask(index)}> 
-          <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
-        </TouchableOpacity> 
-      </View> 
-    </View> 
-  ); 
+  // const renderItem = ({ item }) => ( 
+    // <Pressable>
+    //   <View>
+    //     <Text style={styles.task}> {item.taskName}</Text>
+    //   </View>
+    // </Pressable>
+
+    // <View style={styles.taskItem}> 
+    //   <View style={styles.task}>
+    //     <Text style={styles.taskText}>{item}</Text> 
+    //   </View>
+    //   <View 
+    //     style={styles.taskButtons}> 
+    //     <TouchableOpacity 
+    //       style={styles.viewTaskBtn} 
+    //       // onPress={() => handleEditTask(index)}
+    //       > 
+    //       <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
+    //     </TouchableOpacity> 
+    //   </View> 
+    // </View> 
+  // ); 
 
   const readData = () => { 
     //doc(getFirestore(), "Task", "Task1");
@@ -88,9 +120,24 @@ export default function TasksPage(){
           <Text style={styles.heading2}>Current Tasks</Text> 
           <FlatList 
             style={styles.taskList}
-              data={tasks} 
-              renderItem={renderItem} 
-              keyExtractor={(item, index) => index.toString()} 
+            data={users} 
+            renderItem={({ item }) => (
+              <View style={styles.taskItem}> 
+                <View style={styles.task}>
+                  <Text style={styles.taskText}>{item.taskName}</Text> 
+                </View>
+                <View 
+                style={styles.taskButtons}> 
+                  <TouchableOpacity 
+                    style={styles.viewTaskBtn} 
+                    // onPress={() => handleEditTask(index)}
+                    > 
+                    <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
+                  </TouchableOpacity> 
+                </View> 
+              </View>
+            )} 
+            // keyExtractor={(item, index) => index.toString()} 
           /> 
           {/* <TextInput 
               style={styles.input} 

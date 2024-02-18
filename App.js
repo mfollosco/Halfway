@@ -3,7 +3,7 @@ import TasksPage from './app/screens/tasks'
 import Fetch from './src/Fetch'
   
 const App = () => { 
-  return <Fetch/>; 
+  return <TasksPage/>; 
 }; 
 
 export default App;
