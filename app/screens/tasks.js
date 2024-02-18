@@ -1,4 +1,10 @@
 import React, { useState } from "react"; 
+
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+// import {getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+// import {getFirestore, doc, getDoc} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
 import { 
   View, 
   Text, 
@@ -14,6 +20,11 @@ export default function TasksPage(){
   const [task, setTask] = useState(""); 
   const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
   const [editIndex, setEditIndex] = useState(-1); 
+
+
+  
+  // const app = initializeApp(firebaseConfig);
+  // const analytics = getAnalytics(app);
 
   const handleAddTask = () => { 
     // if (task) { 
@@ -59,6 +70,13 @@ export default function TasksPage(){
     </View> 
   ); 
 
+  const readData = () => { 
+    //doc(getFirestore(), "Task", "Task1");
+    // getDoc(reference).then((doc) =>{
+    //     document.getElementById("data").innerText = JSON.stringify(doc.data()); 
+    setTasks([...tasks, "test2"]);          
+  }
+
   return ( 
       <View style={styles.container}> 
           <ImageBackground source={require('../../assets/images/topBannerImg.png')} style={styles.topBannerImg}>
@@ -82,7 +100,7 @@ export default function TasksPage(){
           />  */}
           <TouchableOpacity 
               style={styles.createTaskBtn} 
-              onPress={handleAddTask}> 
+              onPress={readData}> 
               <Text style={styles.addButtonText}> 
                   Create New Task 
               </Text> 
