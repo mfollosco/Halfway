@@ -25,5 +25,6 @@ The following functionality is completed:
 - [X] **Google Cloud Vision API**
 - [X] **OpenAI**
 - [X] **Hugging Face**
+- [X] **Google's Geolocation API**
 
 ## Video Walkthrough
