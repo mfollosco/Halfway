@@ -17,6 +17,7 @@ import StatsPage from "./app/screens/StatsPage"
 import ChatbotApp from "./chatbot";
 import DetectObject from "./src/mindex";
 import Kamera from "./camera";
+import CameraSuccess from './app/screens/CameraSuccess'
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ const App = () => {
         <Stack.Screen name="ChatbotApp" component={ChatbotApp} />
         <Stack.Screen name="DetectObject" component={DetectObject} />
         <Stack.Screen name="Kamera" component={Kamera} />
+        <Stack.Screen name="CameraSuccess" component={CameraSuccess} />
       </Stack.Navigator>
     </NavigationContainer>
   ); 

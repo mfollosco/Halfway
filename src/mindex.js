@@ -55,6 +55,14 @@ const DetectObject = ({navigation}) => {
             const apiResponse = await axios.post(apiURL, requestData);
             setLabels(apiResponse.data.responses[0].labelAnnotations);
             console.log(apiResponse.data.responses[0].labelAnnotations[0]);
+            const result = apiResponse.data.responses[0].labelAnnotations[0].description;
+            if( result == "Computer" || result == "Pencil" || result == "Pen" || result == "Office Supplies"){
+                navigation.navigate("CameraSuccess");
+            } else{
+                navigation.navigate("HomePage");
+            }
+            
+            
         } catch(error) {
             console.error('Error anazlyzing image: ', error);
             console.log(JSON.stringify(error.response.data));
