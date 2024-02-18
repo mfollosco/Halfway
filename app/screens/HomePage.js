@@ -10,8 +10,7 @@ export default function HomePage({navigation}) {
         navigation.navigate("TasksPage"); 
     };
     handleStatsPage = async () => {
-        console.log("testttt");
-        navigation.navigate("StatsPage"); 
+        navigation.navigate("GeneralAnalyticsPage"); 
     };
     handleFriendsPage = async () => {
         navigation.navigate("FriendsPage"); 
@@ -26,7 +25,7 @@ export default function HomePage({navigation}) {
                 source = {require("./images/HomeBackground.png")}
             >
                 <View style={styles.yellowbackground}>
-                <Text style={styles.text}>Halfway</Text>
+                    <Text style={styles.text}>Halfway</Text>
                 </View>
 
                 {/* start button */}
@@ -75,17 +74,18 @@ const styles = StyleSheet.create({
         flex: 1
     },
     settingsbutton: {
-        left: '1%',
-        top: '150%'
+        // left: '1%',
+        // top: '150%'
+        // top: 100
     },
     friendsButton: {
-        alignSelf: 'center',
-        top: '50%'
+        // alignSelf: 'center',
+        // top: '50%'
     },
     aboutbutton: {
         padding: 2,
-        left: '70%',
-        bottom: '50%'
+        // left: '70%',
+        // bottom: '50%'
     },
     image1: {
         justifyContent: 'center',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         top: '40%',
     },
     backgroundimage: {
-        flex: 1, 
+        flex: 1,
         justifyContent: 'center'
     },
 
@@ -112,7 +112,10 @@ const styles = StyleSheet.create({
     },
 
     group: {
+        marginTop: '30%',
         padding: 20,
+        flexDirection: "row",
+        justifyContent: "space-between",
     }
 
 })

@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, FlatList, Pressable}from "react-native"; 
 
 
-export default function GeneralAnalyticsPage(){ 
-  
+export default function GeneralAnalyticsPage({navigation}){ 
+  const handleBackPage = () => {
+    navigation.navigate("HomePage"); 
+  }
+  const handleTaskAnalytics = () => {
+    navigation.navigate("StatsPage"); 
+  }
   return(
     <View style={styles.container}> 
       <ImageBackground source={require('../../assets/images/topBannerImg2.png')} style={styles.topBannerImg}>
@@ -23,11 +28,11 @@ export default function GeneralAnalyticsPage(){
 
       <ImageBackground source={require('../../assets/images/topBannerImg2.png')} style={styles.topBannerImg}>
         <View style={styles.bottomBanner}>
-          <TouchableOpacity> 
+          <TouchableOpacity onPress={handleBackPage}> 
             <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
           </TouchableOpacity> 
           <TouchableOpacity 
-            style={styles.viewTaskAnalytics}>
+            style={styles.viewTaskAnalytics} onPress={handleTaskAnalytics}>
             <Text style={styles.viewTaskAnalyticsText}> 
               View Task-Based {"\n"} Analytics
             </Text> 

@@ -14,6 +14,10 @@ export default function StatsPage({navigation}) {
         setEntryItems([...entryItems, entry])
         setEntry(null)
     }
+    
+    handleBackBtn = async () => {
+        navigation.navigate("GeneralAnalyticsPage"); 
+    };
 
     return (
         <View style = {styles.background}>
@@ -24,8 +28,13 @@ export default function StatsPage({navigation}) {
                 <ScrollView style={styles.scrollView}
                 keyboardShouldPersistTaps='handled'>
 
-                <View>
-                    <BackButton />
+                <View >
+                    <TouchableOpacity style={styles.container} onPress={handleBackBtn}>
+                        <Image 
+                            source = {require('../components/BackButton/BackButton.png')}
+                            style= {styles.backbutton}
+                        />
+                    </TouchableOpacity>
                     <Text style={styles.text}>Stats</Text>
                 </View>
 
@@ -178,4 +187,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     }, 
 
+    backbutton: {
+        width: 80, 
+        height: 70,
+        top: '30%',
+        left: '5%'
+        
+    },
 })
