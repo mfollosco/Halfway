@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, ImageBackground, ScrollView, TouchableOpacity, St
 import BackButton from "../components/BackButton/BackButton";
 import Entry from "../components/Entry/Entry";
 
-export default function StatsPage() {
+export default function StatsPage({navigation}) {
 
     const [entry, setEntry] = useState();
     const [entryItems, setEntryItems] = useState([]);

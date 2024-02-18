@@ -9,13 +9,17 @@ import InputLocation from "./src/InputLocation"
 import AboutPage from "./app/screens/About"
 import GeneralAnalyticsPage from "./app/screens/GeneralAnalytics"
 import LocationTaskPage from './app/screens/LocationTask'
+import HomePage from './app/screens/HomePage'
+import StatsPage from './app/screens/StatsPage'
 
 const Stack = createNativeStackNavigator();
 
 const App = () => { 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TasksPage">
+      <Stack.Navigator initialRouteName="HomePage">
+        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="StatsPage" component={StatsPage} />
         <Stack.Screen name="TasksPage" component={TasksPage} />
         <Stack.Screen name="AddTaskPage" component={AddTaskPage} />
         <Stack.Screen name="FriendsPage" component={FriendsPage} />

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, FlatList, Pressable}from "react-native"; 
 
 
-export default function AboutPage(){ 
-  
+export default function AboutPage({navigation}){ 
+  handleBackBtn = async () => {
+    navigation.navigate("HomePage"); 
+};
   return(
     <View>
       <View style={styles.topBanner}> 
@@ -13,7 +15,7 @@ export default function AboutPage(){
       <View style={styles.aboutTextContainer}>
         <Text style={styles.heading2}>Halfway</Text>
         <Text style={styles.description}>is a way to ease and improve life’s daily stressors, taken from the philosophy that meeting a goal halfway is miles better than not trying at all. HalfwayHomies, the awesome team behind this project (and many more to come), is an all-women group of computer science students at SCU. To make things short, we enjoy making cool stuff!</Text>
-        <TouchableOpacity > 
+        <TouchableOpacity onPress={handleBackBtn}> 
           <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
         </TouchableOpacity> 
       </View>
