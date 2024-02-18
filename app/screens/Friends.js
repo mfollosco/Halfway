@@ -86,11 +86,11 @@ const styles = StyleSheet.create({
   },
   topBanner: {
     width: '100%',
-    height: 150,
+    height: 100,
     backgroundColor: "#E2D7C6",
   }, 
   heading: {
-    marginTop: 70,
+    marginTop: 25,
     fontSize: 45, 
     fontWeight: "bold", 
     marginBottom: 7, 

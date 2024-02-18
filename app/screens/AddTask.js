@@ -6,17 +6,23 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 import * as Location from 'expo-location';
 import {firebase} from '../../config'
 
-export default function AddTaskPage(){ 
+export default function AddTaskPage({navigation}) {
+  // class TasksPage extends React.Component {
   const [task, setTask] = useState(""); 
   const [locationType, setLocationType] = useState(true)
-  const [taskTypeText, setTaskTypeText] = useState("Location")
-  const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address:")
+  // const [taskTypeText, setTaskTypeText] = useState("Location")
+  const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address")
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState('');
   const [distance, setDistance] = useState(null);
 
   Location.setGoogleApiKey("AIzaSyBBCI4je_3F109yrQOFF8T55soxkejKBmA");
 
+  handleBackPage = async () => {
+    // console.log("Function returned a");
+    // const navigation = useNavigation();
+    navigation.navigate("TasksPage"); 
+  };
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -28,8 +34,8 @@ export default function AddTaskPage(){
 
       let currentLocation = await Location.getCurrentPositionAsync({});
       setLocation(currentLocation);
-      console.log("Location:");
-      console.log(currentLocation);
+      // console.log("Location:");
+      // console.log(currentLocation);
     };
     getPermissions();
       
@@ -60,11 +66,29 @@ export default function AddTaskPage(){
     }
     const database = firebase.firestore();
     const geocodedLocation = await Location.geocodeAsync(address);
-    console.log("Geocoded Address:");
-    console.log(geocodedLocation);
-
+    // console.log("Geocoded Address:");
+    // console.log(geocodedLocation);
+    // let x = geocodedLocation;
+    
     if (geocodedLocation.length === 0) {
-      Alert.alert('Invalid Address', 'Please enter a valid address.');
+      
+      database.collection("TaskTest").add({
+        // wordloc: x,
+        taskName: task,
+        taskLocType: locationType,
+        location: null,
+        address: null,
+        distance: null,
+        object: address,
+      })
+      .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+      console.error("Error adding document: ", error);
+      });
+
+      handleBackPage();
       return;
     }
 
@@ -74,11 +98,14 @@ export default function AddTaskPage(){
     const distanceInMeters = getDistance(userLat, userLng, destLat, destLng);
     setDistance(distanceInMeters);
 
-    database.collection("NewTaskLocation").add({
-        locAddr: address,
+    database.collection("TaskTest").add({
+        // wordloc: x,
+        taskName: task,
+        taskLocType: locationType,
         location: location.coords,
         address: geocodedLocation,
-        distance: distanceInMeters
+        distance: distanceInMeters,
+        object: address,
     })
     .then((docRef) => {
     console.log("Document written with ID: ", docRef.id);
@@ -87,14 +114,15 @@ export default function AddTaskPage(){
     console.error("Error adding document: ", error);
     });
 
+    handleBackPage();
     Alert.alert(
       'Location Information',
       `You are ${distanceInMeters.toFixed(2)} meters away from the specified location.`,
     );
   };
 
-  taskBtnStyle = function(options) {
-    if(locationType){
+  taskBtnStyle = function(isLoc) {
+    if((locationType && isLoc) || (!locationType && !isLoc)){
       return {
         marginLeft: 20,
         backgroundColor: "#110C48", 
@@ -102,7 +130,7 @@ export default function AddTaskPage(){
         borderRightWidth: 15,
         borderRightColor: "#514D80",
         padding: 10, 
-        width: 350,
+        width: 160,
         height: 60,
         alignItems: "center",
         justifyContent: "center",
@@ -115,15 +143,15 @@ export default function AddTaskPage(){
         borderRightWidth: 15,
         borderRightColor: "#514D80",
         padding: 10, 
-        width: 350,
+        width: 160,
         height: 60,
         alignItems: "center",
         justifyContent: "center",
       }
     }
   }
-  taskBtnTextStyle = function(options) {
-    if(locationType){
+  taskBtnTextStyle = function(isLoc) {
+    if((locationType && isLoc) || (!locationType && !isLoc)){
       return {
         color: "#FFFFFF", 
         fontWeight: "bold", 
@@ -139,13 +167,17 @@ export default function AddTaskPage(){
       }
     }
   }
-  updateTaskType = function(options) {
-    setLocationType(!locationType)
-    if(locationType){
-      setTaskTypeText("Location")
+  createNewTask = async = () => {
+    {geocode}
+
+  }
+  updateTaskType = (setting) => {
+    setLocationType(setting)
+    if(setting){
+      // setTaskTypeText("Location")
       setTaskTypePrompt("Location Address:")
     } else{
-      setTaskTypeText("Scan Object")
+      // setTaskTypeText("Scan Object")
       setTaskTypePrompt("Object to Scan")
     }
   }
@@ -168,14 +200,20 @@ export default function AddTaskPage(){
       />
 
       <Text style={styles.headingItem}>Task Type</Text> 
-      {/* <View style={styles.taskBtnContainer}>  */}
-      <TouchableOpacity 
-          style={this.taskBtnStyle()} onPress={updateTaskType}> 
-          <Text style={this.taskBtnTextStyle()}> 
-              {taskTypeText}
-          </Text> 
-      </TouchableOpacity> 
-      {/* </View> */}
+      <View style={styles.taskBtnContainer}> 
+        <TouchableOpacity
+            style={this.taskBtnStyle(true)} onPress={()=>updateTaskType(true)}> 
+            <Text style={this.taskBtnTextStyle(true)}> 
+              Location
+            </Text> 
+        </TouchableOpacity>
+        <TouchableOpacity 
+            style={this.taskBtnStyle(false)} onPress={()=>updateTaskType(false)}> 
+            <Text style={this.taskBtnTextStyle(false)}> 
+              Scan
+            </Text> 
+        </TouchableOpacity> 
+      </View>
 
       <Text style={styles.headingItem}>{taskTypePrompt}</Text> 
       <TextInput 
@@ -184,13 +222,14 @@ export default function AddTaskPage(){
         onChangeText={setAddress}
         placeholder='Enter Location'
       />
-      <Button title="Check Location" onPress={geocode} />
-      <StatusBar style="auto" />
+
+      {/* <Button title="Check Location" onPress={geocode}/> */}
+      {/* <StatusBar style="auto"/> */}
 
       {/* <ImageBackground source={require('../../assets/images/topBannerImg.png')} style={styles.bottomBannerImg}> */}
       <View style = {styles.bottomSection}>
-        <View style={styles.taskBtnContainer}> 
-          <TouchableOpacity > 
+        <View style={styles.bottomBtnContainer}> 
+          <TouchableOpacity onPress={handleBackPage}> 
             <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
           </TouchableOpacity> 
           <TouchableOpacity 
@@ -210,7 +249,6 @@ const styles = StyleSheet.create({
   container: { 
       flex: 1, 
       // padding: 40, 
-      marginTop: 40, 
       backgroundColor: "#FFF2DE",
   }, 
   topBanner: { 
@@ -268,17 +306,22 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    top: 675,
-    // backgroundColor: "#E2D7C6",
+    paddingBottom: 30,
   },
   taskBtnContainer: {
-    marginTop: 20,
+    // marginTop: 20,
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "top", 
+    marginRight: 20,
+  }, 
+  bottomBtnContainer: {
     flexDirection: "row", 
     justifyContent: "space-between", 
     alignItems: "top", 
     marginLeft: 20,
     marginRight: 20,
-  }, 
+  },
   backArrow:{
     width: 90,
     height: 60,
