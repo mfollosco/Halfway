@@ -71,7 +71,22 @@ export default function AddTaskPage({navigation}) {
     // let x = geocodedLocation;
 
     if (geocodedLocation.length === 0) {
-      Alert.alert('Invalid Address', 'Please enter a valid address.');
+      
+      database.collection("TaskTest").add({
+        // wordloc: x,
+        taskName: task,
+        taskLocType: locationType,
+        location: null,
+        address: null,
+        distance: null,
+        object: address,
+      })
+      .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+      console.error("Error adding document: ", error);
+      });
       return;
     }
 
@@ -81,11 +96,14 @@ export default function AddTaskPage({navigation}) {
     const distanceInMeters = getDistance(userLat, userLng, destLat, destLng);
     setDistance(distanceInMeters);
 
-    database.collection("LocInput").add({
+    database.collection("TaskTest").add({
         // wordloc: x,
+        taskName: task,
+        taskLocType: locationType,
         location: location.coords,
         address: geocodedLocation,
-        distance: distanceInMeters
+        distance: distanceInMeters,
+        object: address,
     })
     .then((docRef) => {
     console.log("Document written with ID: ", docRef.id);
@@ -146,6 +164,10 @@ export default function AddTaskPage({navigation}) {
       }
     }
   }
+  createNewTask = async = () => {
+    {geocode}
+
+  }
   updateTaskType = (setting) => {
     setLocationType(setting)
     if(setting){
@@ -197,8 +219,8 @@ export default function AddTaskPage({navigation}) {
         onChangeText={setAddress}
         placeholder='Enter Location'
       />
-      <Button title="Check Location" onPress={geocode}/>
-      <StatusBar style="auto"/>
+      {/* <Button title="Check Location" onPress={geocode}/> */}
+      {/* <StatusBar style="auto"/> */}
 
       {/* <ImageBackground source={require('../../assets/images/topBannerImg.png')} style={styles.bottomBannerImg}> */}
       <View style = {styles.bottomSection}>
