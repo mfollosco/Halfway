@@ -18,32 +18,42 @@ import {
   Pressable,
 } from "react-native"; 
   
-export default function TasksPage(){ 
+// const TasksPage = ({navigation}) => { 
+// class TasksPage extends React.Component {
+
+export default function TasksPage({navigation}) { 
+
   const [task, setTask] = useState(""); 
-  const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
+  // const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
   const [editIndex, setEditIndex] = useState(-1); 
 
   const [users, setUsers] = useState([]);
-  const todoRef = firebase.firestore().collection('Task');
+  const todoRef = firebase.firestore().collection('TaskTest');
 
   // const app = initializeApp(firebaseConfig);
   // const analytics = getAnalytics(app);
 
-  const handleAddTask = () => { 
-    // if (task) { 
-      if (editIndex !== -1) { 
-        // Edit existing task 
-        const updatedTasks = [...tasks]; 
-        updatedTasks[editIndex] = task; 
-        setTasks(updatedTasks); 
-        setEditIndex(-1); 
-      } else { 
-        // Add new task 
-        setTasks([...tasks, "test"]); 
-      } 
-      setTask(""); 
-    // } 
-  }; 
+  // const handleAddTask = () => { 
+  //   // if (task) { 
+  //     if (editIndex !== -1) { 
+  //       // Edit existing task 
+  //       const updatedTasks = [...tasks]; 
+  //       updatedTasks[editIndex] = task; 
+  //       setTasks(updatedTasks); 
+  //       setEditIndex(-1); 
+  //     } else { 
+  //       // Add new task 
+  //       setTasks([...tasks, "test"]); 
+  //     } 
+  //     setTask(""); 
+  //   // } 
+  // }; 
+
+  handleAddTaskPage = async () => {
+    // console.log("Function returned a");
+    // const navigation = useNavigation();
+    navigation.navigate("AddTaskPage"); 
+  };
 
   useEffect(async () => {
     (async () => {
@@ -53,10 +63,11 @@ export default function TasksPage(){
           const users = []
           querySnapshot.forEach((doc) => {
             // const {taskName} = doc.data()
-            const {CompletionTimes, location, taskName} = doc.data()
+            const {address, distance, location, object, taskLocType, taskName} = doc.data()
             users.push({
               id: doc.id,
               taskName,
+              taskLocType,
             })
           })
           setUsers(users)
@@ -72,6 +83,15 @@ export default function TasksPage(){
     setTask(taskToEdit); 
     setEditIndex(index); 
   }; 
+
+  const workOnTask = (index) => {
+    if(users[index].taskLocType){
+      navigation.navigate("LocationTaskPage");
+    } else{
+      return; 
+      //TODO: navigate to camera page
+    }
+  }
 
   // const handleDeleteTask = (index) => { 
   //   const updatedTasks = [...tasks]; 
@@ -121,7 +141,7 @@ export default function TasksPage(){
           <FlatList 
             style={styles.taskList}
             data={users} 
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <View style={styles.taskItem}> 
                 <View style={styles.task}>
                   <Text style={styles.taskText}>{item.taskName}</Text> 
@@ -130,7 +150,7 @@ export default function TasksPage(){
                 style={styles.taskButtons}> 
                   <TouchableOpacity 
                     style={styles.viewTaskBtn} 
-                    // onPress={() => handleEditTask(index)}
+                    onPress={() => workOnTask(index)} 
                     > 
                     <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
                   </TouchableOpacity> 
@@ -147,7 +167,7 @@ export default function TasksPage(){
           />  */}
           <TouchableOpacity 
               style={styles.createTaskBtn} 
-              onPress={readData}> 
+              onPress={handleAddTaskPage}> 
               <Text style={styles.addButtonText}> 
                   Create New Task 
               </Text> 
@@ -160,12 +180,12 @@ const styles = StyleSheet.create({
   container: { 
       flex: 1, 
       // padding: 40, 
-      marginTop: 40, 
+      // marginTop: 40,
       backgroundColor: "#FFF2DE",
   }, 
   topBanner: { 
     position: 'absolute',
-    top: 25, 
+    top: 20,     
     left: 25, 
     right: 25, 
     bottom: 0, 
@@ -272,3 +292,5 @@ const styles = StyleSheet.create({
   //   fontSize: 18, 
   // }, 
 }); 
+
+// export default {TasksPage}
