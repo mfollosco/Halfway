@@ -74,7 +74,8 @@ export default function AddTaskPage(){
     const distanceInMeters = getDistance(userLat, userLng, destLat, destLng);
     setDistance(distanceInMeters);
 
-    database.collection("LocInput").add({
+    database.collection("NewTaskLocation").add({
+        locAddr: address,
         location: location.coords,
         address: geocodedLocation,
         distance: distanceInMeters
