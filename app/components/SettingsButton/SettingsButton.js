@@ -5,7 +5,7 @@ const SettingsButton = (/*{ onPress }*/) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Image 
-                source = {require('./SettingsButton.png')}
+                source = {require('./analytics.png')}
                 style= {styles.settingsbutton}
             />
         </TouchableOpacity>
@@ -14,8 +14,8 @@ const SettingsButton = (/*{ onPress }*/) => {
 
 const styles = StyleSheet.create({
    settingsbutton: {
-    left: '10%',
-    top: '100%',
+    left: '1%',
+    top: '150%'
    }
 
 

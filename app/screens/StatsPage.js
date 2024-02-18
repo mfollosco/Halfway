@@ -1,17 +1,28 @@
 import React from "react";
 import { useState } from "react";
-import { KeyboardAvoidingView,ImageBackground, ScrollView, TouchableOpacity, StyleSheet, Text, View, Image, SafeAreaView, Button, Pressable, Keyboard, TextInput } from 'react-native';
+import { KeyboardAvoidingView, ImageBackground, ScrollView, TouchableOpacity, StyleSheet, Text, View, Image, SafeAreaView, Button, Pressable, Keyboard, TextInput } from 'react-native';
 import BackButton from "../components/BackButton/BackButton";
+import Entry from "../components/Entry/Entry";
 
 export default function StatsPage() {
+
+    const [entry, setEntry] = useState();
+    const [entryItems, setEntryItems] = useState([]);
+
+    const handleAddEntry = () => {
+        Keyboard.dismiss();
+        setEntryItems([...entryItems, entry])
+        setEntry(null)
+    }
+
     return (
         <View style = {styles.background}>
             <ImageBackground 
                 style = {styles.backgroundimage}
-                resizeMethod="cover"
                 source = {require("./images/StatsPage.png")}
             >
-                <ScrollView style={styles.scrollView}>
+                <ScrollView style={styles.scrollView}
+                keyboardShouldPersistTaps='handled'>
 
                 <View>
                     <BackButton />
@@ -33,28 +44,20 @@ export default function StatsPage() {
                         />
                     </TouchableOpacity>
                 </View>
-                {/*
+
+                <View style={styles.entriesWrapper}>
+                
                 <View style={styles.entries}>
                     {
                     entryItems.map((item, index) => {
-                        return (
-                           <TouchableOpacity key ={index} onPress={() => completeEntry(index)}>
-                                <Entry text={item} />
-                           </TouchableOpacity>
-                        )
-                        
-                        {}Entry key={index} text={item} />
-                        })
+                        return <Entry key={index} text={item} />
+                    })
                     }
-                    <Entry text={'Task 1'}/>
-                    <Entry text={'Task 2'}/>
-                </View> */}
+                </View> 
 
                 <KeyboardAvoidingView 
-                    behavior={Platform.OS === "ios" ? "padding" : "height"}
                     style={styles.writeEntryWrapper}
                 >
-                    { /*}
                     <TextInput 
                         style={styles.input} 
                         placeholder={"Write an entry"} 
@@ -67,17 +70,12 @@ export default function StatsPage() {
                             <Text style={styles.addText}>+</Text>
                         </View>
                     </TouchableOpacity>
-                */}
                 </KeyboardAvoidingView>
+                </View>
                 <Image 
                     style={styles.graph}
                     source={require('./images/graph.png')}
                 />
-                
-                <View style={styles.textbackground}>
-                     <Text style={styles.text1}>you’re on track to reach your goal!</Text>
-                </View>
-
                 <TouchableOpacity style={styles.SetGoal}>
                     <Image 
                         source = {require('./images/SetGoalButton.png')}
@@ -127,23 +125,57 @@ const styles = StyleSheet.create({
     statsbackground: {
         backgroundColor: "#E2D7C6",
         width: 399, 
-        height: 387,
+        height: 400,
         bottom: '5%'
     },
 
-    textbackground: {
-        bottom: '37%',
-        left: '7%'
+    SetGoal: {
+        bottom: '39%',
+        left: '66%',
     },
 
-    SetGoal: {
-        bottom: '40%',
-        left: '66%',
+    scrollView: {
+        flexGrow: 1
+    },
+
+    entriesWrapper: {
+        paddingTop: 3,
+        paddingHorizontal: 20,
     },
 
     entries: {
         marginTop: 30,
 
     },
+
+    writeEntryWrapper: {
+        position: 'absolute',
+        bottom: '10%',
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    },
+    input: {
+        paddingVertical: 15,
+        paddingHorizontal: 15,
+        backgroundColor: '#9290B4',
+        borderColor: '#110C48',
+        borderRadius: 60,
+        borderWidth: 1,
+        width: 250,
+        color: '#110C48',
+    },
+
+    addButton: {
+        width: 60,
+        height: 60,
+        backgroundColor: '#9290B4',
+        borderRadius: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#110C48',
+        borderWidth: 1,
+    }, 
 
 })

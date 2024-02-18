@@ -13,11 +13,10 @@ const StartButton = ({ /*onPress*/ }) => {
 }; 
 
 const styles = StyleSheet.create({
-
    image1: {
     justifyContent: 'center',
     left: '15%',
-    top: '30%'
+    top: '40%',
    },
 })
 export default StartButton;

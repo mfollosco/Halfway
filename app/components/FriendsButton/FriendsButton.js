@@ -1,24 +1,23 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable, TouchableOpacity, Image} from 'react-native';
 
-const BackButton = (/*{ onPress }*/) => {
+const FriendsButton = (/*{ onPress }*/) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Image 
-                source = {require('./BackButton.png')}
-                style= {styles.backbutton}
+                source = {require('./friends.png')}
+                style= {styles.settingsbutton}
             />
         </TouchableOpacity>
     );
 }; 
 
 const styles = StyleSheet.create({
-    backbutton: {
-        width: 80, 
-        height: 70,
-        top: '30%',
-        left: '5%'
-        
-    },
+   settingsbutton: {
+    alignSelf: 'center',
+    top: '50%'
+   }
+
+
 })
-export default BackButton;
+export default FriendsButton;

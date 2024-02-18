@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, SafeAreaView, Button, P
 import StartButton from "../components/StartButton/StartButton";
 import AboutButton from "../components/AboutButton/AboutButton";
 import SettingsButton from "../components/SettingsButton/SettingsButton";
+import FriendsButton from "../components/FriendsButton/FriendsButton";
 
 export default function HomePage() {
     return (
@@ -17,6 +18,7 @@ export default function HomePage() {
                 <StartButton />
                 <View style = {styles.group}> 
                     <SettingsButton />
+                    <FriendsButton />
                     <AboutButton />
                 </View>
             </ImageBackground>

@@ -5,7 +5,7 @@ const AboutButton = ({ /*onPress*/ }) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Image 
-                source = {require('./AboutButton.png')}
+                source = {require('./AboutButton(1).png')}
                 style= {styles.aboutbutton}
             />
         </TouchableOpacity>
@@ -15,8 +15,8 @@ const AboutButton = ({ /*onPress*/ }) => {
 const styles = StyleSheet.create({
    aboutbutton: {
     padding: 2,
-    left: '65%',
-    top: '1%'
+    left: '70%',
+    bottom: '50%'
    }
 
 })
