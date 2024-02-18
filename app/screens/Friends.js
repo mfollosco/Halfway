@@ -66,12 +66,12 @@ export default function FriendsPage(){
       <View  style={styles.userContainer}>
         <Image style={styles.userProfile} source={require('../../assets/friendProfile/profile.png')}/>  
         <View style={styles.userTextContainer}> 
-          <Text style={styles.userName}> hello, You! </Text> 
+          <Text style={styles.userName}> hello, Kara! </Text> 
           <Text style={styles.userInfo}> username: {"\n"} apple turnover </Text>
           <Text style={styles.userInfo}> streak: 30 </Text>
         </View>
       </View>
-    </View>
+    </View> 
   )
 };
 
