@@ -1,11 +1,18 @@
-import React, { useState } from "react"; 
-import TasksPage from './app/screens/tasks' 
-// import Fetch from './src/Fetch'
-import AddTaskPage from "./app/screens/AddTask";
-import FriendsPage from "./app/screens/Friends"
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from 'react-native';
+import DetectObject from "./src/mindex";
 
-const App = () => { 
-  return <AddTaskPage/>; 
-}; 
+export default function App(){
+  return(
+    <View style={styles.container}>
+      <DetectObject/>
+    </View>
+  );
+}
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   
+  },
+});
