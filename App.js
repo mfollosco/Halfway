@@ -4,7 +4,7 @@ import HomePage from './app/screens/HomePage';
 import StatsPage from './app/screens/StatsPage';
 
 export default function App() {
-  return <HomePage />
+  return <StatsPage />
 }
 
 const styles = StyleSheet.create({

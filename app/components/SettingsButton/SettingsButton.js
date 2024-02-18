@@ -15,7 +15,7 @@ const SettingsButton = (/*{ onPress }*/) => {
 const styles = StyleSheet.create({
    settingsbutton: {
     left: '10%',
-    top: '1%',
+    top: '100%',
    }
 
 

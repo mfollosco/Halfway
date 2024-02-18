@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
    aboutbutton: {
     padding: 2,
     left: '65%',
-    top: '5%'
+    top: '1%'
    }
 
 })

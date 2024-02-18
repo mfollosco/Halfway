@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     backbutton: {
         width: 84, 
         height: 74,
-        top: '20%',
+        top: '40%',
+        left: '5%'
         
     },
 })

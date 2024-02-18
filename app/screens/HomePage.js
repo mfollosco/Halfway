@@ -9,7 +9,6 @@ export default function HomePage() {
         <View style = {styles.background}>
             <ImageBackground 
                 style = {styles.backgroundimage}
-                resizeMethod="cover"
                 source = {require("./images/HomeBackground.png")}
             >
                 <View style={styles.yellowbackground}>
@@ -47,7 +46,8 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 50, 
+        fontSize: 75, 
+        letterSpacing: 9
     },
 
     group: {
