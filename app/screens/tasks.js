@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react"; 
 import {firebase} from '../../config'
+import { useNavigation } from '@react-navigation/native';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -18,7 +22,11 @@ import {
   Pressable,
 } from "react-native"; 
   
-export default function TasksPage(){ 
+// const TasksPage = ({navigation}) => { 
+// class TasksPage extends React.Component {
+
+export default function TasksPage({navigation}) { 
+
   const [task, setTask] = useState(""); 
   const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
   const [editIndex, setEditIndex] = useState(-1); 
@@ -44,6 +52,12 @@ export default function TasksPage(){
       setTask(""); 
     // } 
   }; 
+
+  handleAddTaskPage = async () => {
+    console.log("Function returned a");
+    // const navigation = useNavigation();
+    navigation.navigate("AddTaskPage"); 
+  };
 
   useEffect(async () => {
     (async () => {
@@ -147,7 +161,7 @@ export default function TasksPage(){
           />  */}
           <TouchableOpacity 
               style={styles.createTaskBtn} 
-              onPress={readData}> 
+              onPress={handleAddTaskPage}> 
               <Text style={styles.addButtonText}> 
                   Create New Task 
               </Text> 
@@ -272,3 +286,5 @@ const styles = StyleSheet.create({
   //   fontSize: 18, 
   // }, 
 }); 
+
+// export default {TasksPage}

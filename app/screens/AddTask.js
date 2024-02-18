@@ -6,7 +6,8 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 import * as Location from 'expo-location';
 import {firebase} from '../../config'
 
-export default function AddTaskPage(){ 
+export default function AddTaskPage() {
+  // class TasksPage extends React.Component {
   const [task, setTask] = useState(""); 
   const [locationType, setLocationType] = useState(true)
   const [taskTypeText, setTaskTypeText] = useState("Location")
