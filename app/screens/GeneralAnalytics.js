@@ -29,7 +29,7 @@ export default function GeneralAnalyticsPage(){
           <TouchableOpacity 
             style={styles.viewTaskAnalytics}>
             <Text style={styles.viewTaskAnalyticsText}> 
-              Create New Task 
+              View Task-Based {"\n"} Analytics
             </Text> 
           </TouchableOpacity> 
         </View>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderRightWidth: 15,
     borderRightColor: "#514D80",
-    padding: 10, 
+    padding: 5, 
     height: 60,
     alignItems: "center",
     justifyContent: "center",
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
     color: "#110C48", 
     fontWeight: "bold", 
     textAlign: "center", 
-    fontSize: 25, 
+    fontSize: 17, 
   }
 });

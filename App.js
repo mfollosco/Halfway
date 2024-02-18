@@ -8,18 +8,20 @@ import FriendsPage from "./app/screens/Friends"
 import InputLocation from "./src/InputLocation"
 import AboutPage from "./app/screens/About"
 import GeneralAnalyticsPage from "./app/screens/GeneralAnalytics"
+import LocationTaskPage from './app/screens/LocationTask'
 
 const Stack = createNativeStackNavigator();
 
 const App = () => { 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="GeneralAnalyticsPage">
+      <Stack.Navigator initialRouteName="LocationTaskPage">
         <Stack.Screen name="TasksPage" component={TasksPage} />
         <Stack.Screen name="AddTaskPage" component={AddTaskPage} />
         <Stack.Screen name="FriendsPage" component={FriendsPage} />
         <Stack.Screen name="AboutPage" component={AboutPage} />
         <Stack.Screen name="GeneralAnalyticsPage" component={GeneralAnalyticsPage} />
+        <Stack.Screen name="LocationTaskPage" component={LocationTaskPage} />
       </Stack.Navigator>
     </NavigationContainer>
   ); 
