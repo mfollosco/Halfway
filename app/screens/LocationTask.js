@@ -6,6 +6,10 @@ export default function LocationTaskPage({navigation}){
   const backPage = () => {
     navigation.navigate("TasksPage"); 
   }
+  const chatbotPage = () => {
+    navigation.navigate("ChatbotApp"); 
+  }
+
   const [close, setClose] = useState(true);
   return(
     <View style={styles.container}> 
@@ -14,8 +18,7 @@ export default function LocationTaskPage({navigation}){
           <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
         </TouchableOpacity> 
         <Text style={styles.infoText}>{close == true ? "Congrats! You are close enough to start this task!" : "Good start! Head closer to begin this task!"} </Text> 
-          <TouchableOpacity 
-          style={styles.chatBotBtn} > 
+          <TouchableOpacity style={styles.chatBotBtn} onPress={chatbotPage}> 
           <Text style={styles.chatBtnText}> 
             Talk to Chat Bot
           </Text> 
