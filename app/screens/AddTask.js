@@ -11,7 +11,7 @@ export default function AddTaskPage({navigation}) {
   const [task, setTask] = useState(""); 
   const [locationType, setLocationType] = useState(true)
   // const [taskTypeText, setTaskTypeText] = useState("Location")
-  const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address:")
+  const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address")
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState('');
   const [distance, setDistance] = useState(null);
@@ -19,7 +19,7 @@ export default function AddTaskPage({navigation}) {
   Location.setGoogleApiKey("AIzaSyBBCI4je_3F109yrQOFF8T55soxkejKBmA");
 
   handleBackPage = async () => {
-    console.log("Function returned a");
+    // console.log("Function returned a");
     // const navigation = useNavigation();
     navigation.navigate("TasksPage"); 
   };
@@ -34,8 +34,8 @@ export default function AddTaskPage({navigation}) {
 
       let currentLocation = await Location.getCurrentPositionAsync({});
       setLocation(currentLocation);
-      console.log("Location:");
-      console.log(currentLocation);
+      // console.log("Location:");
+      // console.log(currentLocation);
     };
     getPermissions();
       
@@ -66,8 +66,8 @@ export default function AddTaskPage({navigation}) {
     }
     const database = firebase.firestore();
     const geocodedLocation = await Location.geocodeAsync(address);
-    console.log("Geocoded Address:");
-    console.log(geocodedLocation);
+    // console.log("Geocoded Address:");
+    // console.log(geocodedLocation);
     // let x = geocodedLocation;
 
     if (geocodedLocation.length === 0) {
