@@ -6,11 +6,11 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 import * as Location from 'expo-location';
 import {firebase} from '../../config'
 
-export default function AddTaskPage() {
+export default function AddTaskPage({navigation}) {
   // class TasksPage extends React.Component {
   const [task, setTask] = useState(""); 
   const [locationType, setLocationType] = useState(true)
-  const [taskTypeText, setTaskTypeText] = useState("Location")
+  // const [taskTypeText, setTaskTypeText] = useState("Location")
   const [taskTypePrompt, setTaskTypePrompt] = useState("Location Address:")
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState('');
@@ -18,6 +18,11 @@ export default function AddTaskPage() {
 
   Location.setGoogleApiKey("AIzaSyBBCI4je_3F109yrQOFF8T55soxkejKBmA");
 
+  handleBackPage = async () => {
+    console.log("Function returned a");
+    // const navigation = useNavigation();
+    navigation.navigate("TasksPage"); 
+  };
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -95,8 +100,8 @@ export default function AddTaskPage() {
     );
   };
 
-  taskBtnStyle = function(options) {
-    if(locationType){
+  taskBtnStyle = function(isLoc) {
+    if((locationType && isLoc) || (!locationType && !isLoc)){
       return {
         marginLeft: 20,
         backgroundColor: "#110C48", 
@@ -104,7 +109,7 @@ export default function AddTaskPage() {
         borderRightWidth: 15,
         borderRightColor: "#514D80",
         padding: 10, 
-        width: 350,
+        width: 160,
         height: 60,
         alignItems: "center",
         justifyContent: "center",
@@ -117,15 +122,15 @@ export default function AddTaskPage() {
         borderRightWidth: 15,
         borderRightColor: "#514D80",
         padding: 10, 
-        width: 350,
+        width: 160,
         height: 60,
         alignItems: "center",
         justifyContent: "center",
       }
     }
   }
-  taskBtnTextStyle = function(options) {
-    if(locationType){
+  taskBtnTextStyle = function(isLoc) {
+    if((locationType && isLoc) || (!locationType && !isLoc)){
       return {
         color: "#FFFFFF", 
         fontWeight: "bold", 
@@ -141,13 +146,13 @@ export default function AddTaskPage() {
       }
     }
   }
-  updateTaskType = function(options) {
-    setLocationType(!locationType)
-    if(locationType){
-      setTaskTypeText("Location")
+  updateTaskType = (setting) => {
+    setLocationType(setting)
+    if(setting){
+      // setTaskTypeText("Location")
       setTaskTypePrompt("Location Address:")
     } else{
-      setTaskTypeText("Scan Object")
+      // setTaskTypeText("Scan Object")
       setTaskTypePrompt("Object to Scan")
     }
   }
@@ -170,14 +175,20 @@ export default function AddTaskPage() {
       />
 
       <Text style={styles.headingItem}>Task Type</Text> 
-      {/* <View style={styles.taskBtnContainer}>  */}
-      <TouchableOpacity 
-          style={this.taskBtnStyle()} onPress={updateTaskType}> 
-          <Text style={this.taskBtnTextStyle()}> 
-              {taskTypeText}
-          </Text> 
-      </TouchableOpacity> 
-      {/* </View> */}
+      <View style={styles.taskBtnContainer}> 
+        <TouchableOpacity
+            style={this.taskBtnStyle(true)} onPress={()=>updateTaskType(true)}> 
+            <Text style={this.taskBtnTextStyle(true)}> 
+              Location
+            </Text> 
+        </TouchableOpacity>
+        <TouchableOpacity 
+            style={this.taskBtnStyle(false)} onPress={()=>updateTaskType(false)}> 
+            <Text style={this.taskBtnTextStyle(false)}> 
+              Scan
+            </Text> 
+        </TouchableOpacity> 
+      </View>
 
       <Text style={styles.headingItem}>{taskTypePrompt}</Text> 
       <TextInput 
@@ -191,8 +202,8 @@ export default function AddTaskPage() {
 
       {/* <ImageBackground source={require('../../assets/images/topBannerImg.png')} style={styles.bottomBannerImg}> */}
       <View style = {styles.bottomSection}>
-        <View style={styles.taskBtnContainer}> 
-          <TouchableOpacity > 
+        <View style={styles.bottomBtnContainer}> 
+          <TouchableOpacity onPress={handleBackPage}> 
             <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
           </TouchableOpacity> 
           <TouchableOpacity 
@@ -276,9 +287,15 @@ const styles = StyleSheet.create({
     flexDirection: "row", 
     justifyContent: "space-between", 
     alignItems: "top", 
-    marginLeft: 20,
     marginRight: 20,
   }, 
+  bottomBtnContainer: {
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "top", 
+    marginLeft: 20,
+    marginRight: 20,
+  },
   backArrow:{
     width: 90,
     height: 60,

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react"; 
 import {firebase} from '../../config'
-import { useNavigation } from '@react-navigation/native';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -37,21 +33,21 @@ export default function TasksPage({navigation}) {
   // const app = initializeApp(firebaseConfig);
   // const analytics = getAnalytics(app);
 
-  const handleAddTask = () => { 
-    // if (task) { 
-      if (editIndex !== -1) { 
-        // Edit existing task 
-        const updatedTasks = [...tasks]; 
-        updatedTasks[editIndex] = task; 
-        setTasks(updatedTasks); 
-        setEditIndex(-1); 
-      } else { 
-        // Add new task 
-        setTasks([...tasks, "test"]); 
-      } 
-      setTask(""); 
-    // } 
-  }; 
+  // const handleAddTask = () => { 
+  //   // if (task) { 
+  //     if (editIndex !== -1) { 
+  //       // Edit existing task 
+  //       const updatedTasks = [...tasks]; 
+  //       updatedTasks[editIndex] = task; 
+  //       setTasks(updatedTasks); 
+  //       setEditIndex(-1); 
+  //     } else { 
+  //       // Add new task 
+  //       setTasks([...tasks, "test"]); 
+  //     } 
+  //     setTask(""); 
+  //   // } 
+  // }; 
 
   handleAddTaskPage = async () => {
     console.log("Function returned a");
