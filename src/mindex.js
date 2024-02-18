@@ -33,7 +33,7 @@ const DetectObject = () => {
                 return;
             }
 
-            const apiKey = "AIzaSyDNxMbYDclbibmlgWsQsqLPkjPMEBlVhGw";
+            const apiKey = "AIzaSyCwd0Zsx3D5C8K74iXQe9cvum5YzFJeR08";
             const apiURL = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
         
             //read the image file from local URI and convert it to base64
@@ -54,9 +54,10 @@ const DetectObject = () => {
 
             const apiResponse = await axios.post(apiURL, requestData);
             setLabels(apiResponse.data.responses[0].labelAnnotations);
+            console.log(apiResponse.data.responses[0].labelAnnotations[0]);
         } catch(error) {
             console.error('Error anazlyzing image: ', error);
-            console.log(JSON.stringify(error.message));
+            console.log(JSON.stringify(error.response.data));
             alert('Error analyzing image. Please try again later');
         }
     };
