@@ -1,23 +1,23 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable, TouchableOpacity, Image} from 'react-native';
 
-const SettingsButton = (/*{ onPress }*/) => {
+const BackButton = (/*{ onPress }*/) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Image 
-                source = {require('./SettingsButton.png')}
-                style= {styles.settingsbutton}
+                source = {require('./BackButton.png')}
+                style= {styles.backbutton}
             />
         </TouchableOpacity>
     );
 }; 
 
 const styles = StyleSheet.create({
-   settingsbutton: {
-    left: '10%',
-    top: '1%',
-   }
-
-
+    backbutton: {
+        width: 84, 
+        height: 74,
+        top: '20%',
+        
+    },
 })
-export default SettingsButton;
+export default BackButton;

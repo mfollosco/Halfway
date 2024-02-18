@@ -10,14 +10,16 @@ export default function HomePage() {
             <ImageBackground 
                 style = {styles.backgroundimage}
                 resizeMethod="cover"
-                source = {require("../assets/HomeBackground.png")}
+                source = {require("./images/HomeBackground.png")}
             >
                 <View style={styles.yellowbackground}>
                 <Text style={styles.text}>Halfway</Text>
                 </View>
                 <StartButton />
-                <SettingsButton />
-                <AboutButton />
+                <View style = {styles.group}> 
+                    <SettingsButton />
+                    <AboutButton />
+                </View>
             </ImageBackground>
 
         </View>
@@ -46,6 +48,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 50, 
+    },
+
+    group: {
+        padding: 20,
     }
 
 })
