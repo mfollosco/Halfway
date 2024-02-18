@@ -24,11 +24,11 @@ import {
 export default function TasksPage({navigation}) { 
 
   const [task, setTask] = useState(""); 
-  const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
+  // const [tasks, setTasks] = useState(["Eat Healthy", "Go to the Gym", "Study"]); 
   const [editIndex, setEditIndex] = useState(-1); 
 
   const [users, setUsers] = useState([]);
-  const todoRef = firebase.firestore().collection('Task');
+  const todoRef = firebase.firestore().collection('TaskTest');
 
   // const app = initializeApp(firebaseConfig);
   // const analytics = getAnalytics(app);
@@ -63,7 +63,7 @@ export default function TasksPage({navigation}) {
           const users = []
           querySnapshot.forEach((doc) => {
             // const {taskName} = doc.data()
-            const {CompletionTimes, location, taskName} = doc.data()
+            const {address, distance, location, object, taskLocType, taskName} = doc.data()
             users.push({
               id: doc.id,
               taskName,
