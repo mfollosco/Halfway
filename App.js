@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 const App = () => { 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LocationTaskPage">
+      <Stack.Navigator initialRouteName="TasksPage">
         <Stack.Screen name="TasksPage" component={TasksPage} />
         <Stack.Screen name="AddTaskPage" component={AddTaskPage} />
         <Stack.Screen name="FriendsPage" component={FriendsPage} />

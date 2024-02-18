@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, FlatList, Pressable}from "react-native"; 
 
 
-export default function LocationTaskPage(){ 
+export default function LocationTaskPage({navigation}){ 
+  const backPage = () => {
+    navigation.navigate("TasksPage"); 
+  }
   const [close, setClose] = useState(true);
   return(
     <View style={styles.container}> 
       <ImageBackground source={require('../../assets/images/CharacterBackground.png')} style={styles.backgroundImg}>
-        <TouchableOpacity> 
+        <TouchableOpacity onPress={backPage}> 
           <Image style={styles.backArrow} source={require('../../assets/images/arrow3.png')} />
         </TouchableOpacity> 
         <Text style={styles.infoText}>{close == true ? "Congrats! You are close enough to start this task!" : "Good start! Head closer to begin this task!"} </Text> 

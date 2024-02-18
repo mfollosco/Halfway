@@ -50,7 +50,7 @@ export default function TasksPage({navigation}) {
   // }; 
 
   handleAddTaskPage = async () => {
-    console.log("Function returned a");
+    // console.log("Function returned a");
     // const navigation = useNavigation();
     navigation.navigate("AddTaskPage"); 
   };
@@ -67,6 +67,7 @@ export default function TasksPage({navigation}) {
             users.push({
               id: doc.id,
               taskName,
+              taskLocType,
             })
           })
           setUsers(users)
@@ -82,6 +83,13 @@ export default function TasksPage({navigation}) {
     setTask(taskToEdit); 
     setEditIndex(index); 
   }; 
+
+  const workOnTask = () => {
+    navigation.navigate("LocationTaskPage"); 
+    // if(users[index].taskLocType){
+
+    // }
+  }
 
   // const handleDeleteTask = (index) => { 
   //   const updatedTasks = [...tasks]; 
@@ -140,7 +148,7 @@ export default function TasksPage({navigation}) {
                 style={styles.taskButtons}> 
                   <TouchableOpacity 
                     style={styles.viewTaskBtn} 
-                    // onPress={() => handleEditTask(index)}
+                    onPress={() => workOnTask()} 
                     > 
                     <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
                   </TouchableOpacity> 
