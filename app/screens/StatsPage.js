@@ -21,14 +21,14 @@ export default function StatsPage({navigation}) {
 
     return (
         <View style = {styles.background}>
+            
             <ImageBackground 
                 style = {styles.backgroundimage}
                 source = {require("./images/StatsPage.png")}
             >
-                <ScrollView style={styles.scrollView}
-                keyboardShouldPersistTaps='handled'>
-
-                <View >
+                <ScrollView style = {styles.scrollView}>
+         
+                <View style = {styles.topgroup}>
                     <TouchableOpacity style={styles.container} onPress={handleBackBtn}>
                         <Image 
                             source = {require('../components/BackButton/BackButton.png')}
@@ -52,36 +52,7 @@ export default function StatsPage({navigation}) {
                             style= {styles.TimeFrameButton}
                         />
                     </TouchableOpacity>
-                </View>
-
-                <View style={styles.entriesWrapper}>
-                
-                <View style={styles.entries}>
-                    {
-                    entryItems.map((item, index) => {
-                        return <Entry key={index} text={item} />
-                    })
-                    }
-                </View> 
-
-                <KeyboardAvoidingView 
-                    style={styles.writeEntryWrapper}
-                >
-                    <TextInput 
-                        style={styles.input} 
-                        placeholder={"Write an entry"} 
-                        value={entry} 
-                        onChangeText={text => setEntry(text)}
-                    />
-
-                    <TouchableOpacity onPress = {() => handleAddEntry()}>
-                        <View style={styles.addButton}>
-                            <Text style={styles.addText}>+</Text>
-                        </View>
-                    </TouchableOpacity>
-                </KeyboardAvoidingView>
-                </View>
-                <Image 
+                    <Image 
                     style={styles.graph}
                     source={require('./images/graph.png')}
                 />
@@ -92,9 +63,36 @@ export default function StatsPage({navigation}) {
                     />
                 </TouchableOpacity>
 
+                </View>
+               
+                <View style={styles.entriesWrapper}>
+                    <View 
+                        style={styles.writeEntryWrapper}
+                    >
+                        <TouchableOpacity onPress = {() => handleAddEntry()}>
+                            <View style={styles.addButton}>
+                                <Text style={styles.addText}>+</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TextInput 
+                            style={styles.input} 
+                            placeholder={"Write an entry"} 
+                            value={entry} 
+                            onChangeText={text => setEntry(text)}
+                        />
+
+                        
+                    </View>
+                    <View style={styles.entries}>
+                        {
+                        entryItems.map((item, index) => {
+                            return <Entry key={index} text={item} />
+                        })
+                        }
+                    </View> 
+                    </View> 
                 </ScrollView>
             </ImageBackground>
-
         </View>
         
     )
@@ -107,6 +105,13 @@ const styles = StyleSheet.create({
 
     backgroundimage: {
         flex: 1, 
+        justifyContent: 'center'
+    },
+    
+    topgroup: {
+        flexDirection: "row",
+        justifyContent: 'space-around',
+        marginBottom: '10%'
     },
 
     dropdownbutton: {
@@ -119,27 +124,27 @@ const styles = StyleSheet.create({
         top: '70%'
     },
     graph: {
-        bottom: '40%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        top: '10%',
+
     },
 
     text: {
         alignSelf: 'center',
         fontSize: 60,
         fontWeight: 'bold',
-        bottom: '30%',
-        left: '5%'
+        marginTop: '5%'
     },
 
     statsbackground: {
         backgroundColor: "#E2D7C6",
         width: 399, 
         height: 400,
-        bottom: '5%'
+        marginBottom: 70,
     },
 
     SetGoal: {
-        bottom: '39%',
+        top: '15%',
         left: '66%',
     },
 
@@ -150,20 +155,21 @@ const styles = StyleSheet.create({
     entriesWrapper: {
         paddingTop: 3,
         paddingHorizontal: 20,
+        paddingBottom: 30
     },
 
     entries: {
-        marginTop: 30,
-
+        zIndex: 1,
     },
 
     writeEntryWrapper: {
-        position: 'absolute',
-        bottom: '10%',
         width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        height: 50,
+        marginBottom: '15%',
         alignItems: 'center',
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        zIndex: 2
     },
     input: {
         paddingVertical: 15,
@@ -177,8 +183,8 @@ const styles = StyleSheet.create({
     },
 
     addButton: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
         backgroundColor: '#9290B4',
         borderRadius: 60,
         justifyContent: 'center',
@@ -191,7 +197,7 @@ const styles = StyleSheet.create({
         width: 80, 
         height: 70,
         top: '30%',
-        left: '5%'
+        right: '30%'
         
     },
 })

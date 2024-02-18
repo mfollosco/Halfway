@@ -69,7 +69,7 @@ export default function AddTaskPage({navigation}) {
     // console.log("Geocoded Address:");
     // console.log(geocodedLocation);
     // let x = geocodedLocation;
-
+    
     if (geocodedLocation.length === 0) {
       
       database.collection("TaskTest").add({
@@ -222,6 +222,7 @@ export default function AddTaskPage({navigation}) {
         onChangeText={setAddress}
         placeholder='Enter Location'
       />
+
       {/* <Button title="Check Location" onPress={geocode}/> */}
       {/* <StatusBar style="auto"/> */}
 

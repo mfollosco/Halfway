@@ -4,6 +4,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import axios from 'axios';
 import { firebase } from './config';
 //import 'firebase/firestore'
+//maddie's code online!
 
 const assistant_role = `
   I am Sunny, your dedicated, but limited, habit tracking assistant. Here's what to expect:
@@ -27,7 +28,7 @@ const assistant_role = `
   I'm here to provide simple recognition, not complex therapy. Focus on sharing your progress, and I'll offer a quick boost without unnecessary chatter.
 `;
 
-const OPEN_AI_KEY = "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";
+const OPEN_AI_KEY = "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";
 
 export default function ChatbotApp({ navigation }) {
   const [messages, setMessages] = useState([]);
