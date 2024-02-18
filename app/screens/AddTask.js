@@ -212,7 +212,6 @@ const styles = StyleSheet.create({
   container: { 
       flex: 1, 
       // padding: 40, 
-      marginTop: 40, 
       backgroundColor: "#FFF2DE",
   }, 
   topBanner: { 
@@ -270,11 +269,10 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    top: 675,
-    // backgroundColor: "#E2D7C6",
+    paddingBottom: 30,
   },
   taskBtnContainer: {
-    marginTop: 20,
+    // marginTop: 20,
     flexDirection: "row", 
     justifyContent: "space-between", 
     alignItems: "top", 

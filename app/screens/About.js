@@ -24,11 +24,11 @@ export default function AboutPage(){
 const styles = StyleSheet.create({ 
   topBanner: {
     width: '100%',
-    height: 130, 
+    height: 85, 
     backgroundColor: "#E2D7C6",
   }, 
   heading: {
-    marginTop: 65,
+    marginTop: 15,
     fontSize: 45, 
     fontWeight: "bold", 
     marginBottom: 7, 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   aboutImg:{
     width: "100%",
-    height: 400,
+    height: 375,
   },
   aboutTextContainer:{
     backgroundColor: "#E2D7C6",

@@ -174,12 +174,12 @@ const styles = StyleSheet.create({
   container: { 
       flex: 1, 
       // padding: 40, 
-      marginTop: 40, 
+      // marginTop: 40,
       backgroundColor: "#FFF2DE",
   }, 
   topBanner: { 
     position: 'absolute',
-    top: 25, 
+    top: 20,     
     left: 25, 
     right: 25, 
     bottom: 0, 

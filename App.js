@@ -17,8 +17,8 @@ const App = () => {
       <Stack.Navigator initialRouteName="TasksPage">
         <Stack.Screen name="TasksPage" component={TasksPage} />
         <Stack.Screen name="AddTaskPage" component={AddTaskPage} />
-        {/* <Stack.Screen name="FriendsPage" component={FriendsPage} />
-        <Stack.Screen name="AboutPage" component={AboutPage} /> */}
+        <Stack.Screen name="FriendsPage" component={FriendsPage} />
+        <Stack.Screen name="AboutPage" component={AboutPage} />
       </Stack.Navigator>
     </NavigationContainer>
   ); 
