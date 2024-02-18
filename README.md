@@ -20,7 +20,9 @@ The following functionality is completed:
 ## Technologies
 - [X] **Firebase**
 - [X] **Python**
-- [X] **Flask**
+- [X] **Pytorch**
 - [X] **React-Native**
+- [X] **Google Cloud Vision API**
+- [X] **Large Language Models**
 
 ## Video Walkthrough
