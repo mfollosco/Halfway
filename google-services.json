@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914484605993",
+    "project_id": "halfway-a6c8d",
+    "storage_bucket": "halfway-a6c8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914484605993:android:b66c151ddf1b7e40b61838",
+        "android_client_info": {
+          "package_name": "com.halfway.hfh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAog2WSJUbJ0fuf3xDJJgHsqJ22v39F0qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
