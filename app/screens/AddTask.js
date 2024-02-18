@@ -87,6 +87,8 @@ export default function AddTaskPage({navigation}) {
       .catch((error) => {
       console.error("Error adding document: ", error);
       });
+
+      handleBackPage();
       return;
     }
 
@@ -112,6 +114,7 @@ export default function AddTaskPage({navigation}) {
     console.error("Error adding document: ", error);
     });
 
+    handleBackPage();
     Alert.alert(
       'Location Information',
       `You are ${distanceInMeters.toFixed(2)} meters away from the specified location.`,
