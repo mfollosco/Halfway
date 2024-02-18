@@ -1,10 +1,14 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import ChatbotApp from './chatbot.js';
+import axios from "axios";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* Other components or views can be added here */}
+      <ChatbotApp />
       <StatusBar style="auto" />
     </View>
   );
