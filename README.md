@@ -23,6 +23,7 @@ The following functionality is completed:
 - [X] **Pytorch**
 - [X] **React-Native**
 - [X] **Google Cloud Vision API**
-- [X] **Large Language Models**
+- [X] **OpenAI**
+- [X] **Hugging Face**
 
 ## Video Walkthrough
