@@ -1,10 +1,8 @@
 import React, { useState } from "react"; 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import ChatbotApp from './chatbot.js';
 import axios from "axios";
 
 import TasksPage from './app/screens/tasks' 
@@ -16,6 +14,7 @@ import GeneralAnalyticsPage from "./app/screens/GeneralAnalytics"
 import LocationTaskPage from './app/screens/LocationTask'
 import HomePage from './app/screens/HomePage'
 import StatsPage from './app/screens/StatsPage'
+import ChatbotApp from './chatbot';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +30,7 @@ const App = () => {
         <Stack.Screen name="AboutPage" component={AboutPage} />
         <Stack.Screen name="GeneralAnalyticsPage" component={GeneralAnalyticsPage} />
         <Stack.Screen name="LocationTaskPage" component={LocationTaskPage} />
+        <Stack.Screen name="ChatbotApp" component={ChatbotApp} />
       </Stack.Navigator>
     </NavigationContainer>
   ); 

@@ -19,11 +19,8 @@ export default function GeneralAnalyticsPage({navigation}){
       </ImageBackground>
 
       <View style={styles.imgContainer}>
-        <Image style={styles.analyticsImg1} source={require('../../assets/images/arrow3.png')} />
-        <View style={styles.innerImgContainer}>
-          <Image style={styles.analyticsImg2} source={require('../../assets/images/arrow3.png')} />
-          <Image style={styles.analyticsImg2} source={require('../../assets/images/arrow3.png')} />
-        </View>
+        <Image style={styles.analyticsImg1} source={require('../../assets/wordcloud/positive.jpg')} />
+        <Image style={styles.analyticsImg1} source={require('../../assets/wordcloud/negative.jpg')} />
       </View>
 
       <ImageBackground source={require('../../assets/images/topBannerImg2.png')} style={styles.topBannerImg}>
@@ -90,13 +87,8 @@ const styles = StyleSheet.create({
     color: "#110C48",
   },
   analyticsImg1:{
-    width: 270,
-    height: 200,
-    margin: 10,
-  },
-  analyticsImg2:{
-    width: 150,
-    height: 150,
+    width: 330,
+    height: 180,
     margin: 10,
   },
   imgContainer: {

@@ -29,7 +29,7 @@ const assistant_role = `
 
 const OPEN_AI_KEY = "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";
 
-export default function ChatbotApp() {
+export default function ChatbotApp({navigation}) {
   const [messages, setMessages] = useState([]);
 
   const handleSend = async (newMessages = []) => {
