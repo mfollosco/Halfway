@@ -84,11 +84,13 @@ export default function TasksPage({navigation}) {
     setEditIndex(index); 
   }; 
 
-  const workOnTask = () => {
-    navigation.navigate("LocationTaskPage"); 
-    // if(users[index].taskLocType){
-
-    // }
+  const workOnTask = (index) => {
+    if(users[index].taskLocType){
+      navigation.navigate("LocationTaskPage");
+    } else{
+      return; 
+      //TODO: navigate to camera page
+    }
   }
 
   // const handleDeleteTask = (index) => { 
@@ -139,7 +141,7 @@ export default function TasksPage({navigation}) {
           <FlatList 
             style={styles.taskList}
             data={users} 
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <View style={styles.taskItem}> 
                 <View style={styles.task}>
                   <Text style={styles.taskText}>{item.taskName}</Text> 
@@ -148,7 +150,7 @@ export default function TasksPage({navigation}) {
                 style={styles.taskButtons}> 
                   <TouchableOpacity 
                     style={styles.viewTaskBtn} 
-                    onPress={() => workOnTask()} 
+                    onPress={() => workOnTask(index)} 
                     > 
                     <Image style={styles.taskArrow} source={require('../../assets/images/arrow2.png')} />
                   </TouchableOpacity> 
