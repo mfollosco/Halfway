@@ -7,7 +7,7 @@ import { shareAsync } from 'expo-sharing';
 import * as MediaLibrary from 'expo-media-library';
 import { ImageBackground } from 'react-native'; // use backgrounds
 
-const Kamera = () => {
+const Kamera = ({navigation}) => {
     let cameraRef = useRef(); // contantly changing camera variable (for live camera view)
     const [hasCameraPermission, setHasCameraPermission] = useState();
     const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
@@ -55,9 +55,14 @@ const Kamera = () => {
       });
     };
 
+    const detectImage = () => {
+        navigation.navigate("DetectObject");
+    }
+    
     let savePhoto = () => { // function to save the picture
         MediaLibrary.saveToLibraryAsync(photo.uri).then(() => { // save photo.uri to library
           setPhoto(undefined); // discard photo once saved
+          detectImage();
         });
       };
 

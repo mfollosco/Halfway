@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 
-const DetectObject = () => {
+const DetectObject = ({navigation}) => {
     const[imageUri,setImageUri] = useState(null);
     const[labels, setLabels] = useState([]);
 
