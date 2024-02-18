@@ -3708,6 +3708,13 @@ expo-build-properties@~0.11.1:
     ajv "^8.11.0"
     semver "^7.5.3"
 
+expo-camera@~14.0.5:
+  version "14.0.5"
+  resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-14.0.5.tgz#b39a873316895e5a7ab86e8131dc9ffe529fc972"
+  integrity sha512-rHCOEAjt0NOjYXMyKnrGruOMvPdKbhhJBMtpr8LfJPVprsxZTjFC+flQgX52tZZWxPa1Hn6qpGYUzxZhVakHCg==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-constants@~15.4.0, expo-constants@~15.4.5:
   version "15.4.5"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-15.4.5.tgz"
@@ -3756,6 +3763,11 @@ expo-location@^16.5.3:
   resolved "https://registry.npmjs.org/expo-location/-/expo-location-16.5.3.tgz"
   integrity sha512-V+84TZIa5MWpIXPvurnlJS9VxuxF1d3ajufUeq2sTgUkI/PP0aLHwyk5wg05C4CwuvwoiaVV80WyEL23j1Mz0w==
 
+expo-media-library@~15.9.1:
+  version "15.9.1"
+  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-15.9.1.tgz#1eaf5a0c8f51669f6f86d385a8fa411226042216"
+  integrity sha512-Y29uKFJ3qWwNejIrjoCppXp3OgIFs/RYHWXkF9xey6evpNrUlHoP1WHG2jYAMSrss6aIRVt3tO7EtYUCZxz50Q==
+
 expo-modules-autolinking@1.10.3:
   version "1.10.3"
   resolved "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-1.10.3.tgz"
@@ -3788,6 +3800,11 @@ expo-notifications@~0.27.6:
     expo-application "~5.8.0"
     expo-constants "~15.4.0"
     fs-extra "^9.1.0"
+
+expo-sharing@~11.10.0:
+  version "11.10.0"
+  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-11.10.0.tgz#0e85197ee4d2634b00fe201e571fbdc64cf83eef"
+  integrity sha512-/64RyyKlZ25WfnMXa87HbPXhIIqWwNbIku/RaIYAq4SE0XTRC+KTH3v0XFkfDa+SCG/jKsAr1pJ3vQvsNo1sCQ==
 
 expo-status-bar@~1.11.1:
   version "1.11.1"
