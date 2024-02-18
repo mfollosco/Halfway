@@ -88,19 +88,7 @@ const DetectObject = () => {
       {
             labels.length > 0 && (
                 <View> 
-                    <Text styles={styles.label}>
-                        Labels:
-                    </Text>
-                    {
-                        labels.map((label) => (
-                            <Text
-                                key={label.mid}
-                                style={styles.outputtext}
-                            >
-                                {label.description}
-                            </Text>
-                        ))
-                    }
+                   
                 </View>
             )
       }
