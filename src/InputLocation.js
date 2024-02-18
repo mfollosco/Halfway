@@ -1,7 +1,5 @@
 
 import React, {useState, useEffect} from 'react';
-import {firebase} from '../config';
-
 import { StatusBar } from 'expo-status-bar';
 import { Button, TextInput, View, Alert, StyleSheet, Text, FlatList, Pressable  } from 'react-native';
 import * as Location from 'expo-location';
