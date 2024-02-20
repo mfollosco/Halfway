@@ -34,6 +34,7 @@ const DetectObject = ({navigation}) => {
             }
 
             const apiKey = "AIzaSyCwd0Zsx3D5C8K74iXQe9cvum5YzFJeR08";
+
             const apiURL = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
         
             //read the image file from local URI and convert it to base64
@@ -96,7 +97,19 @@ const DetectObject = ({navigation}) => {
       {
             labels.length > 0 && (
                 <View> 
-                   
+                    <Text styles={styles.label}>
+                        Labels:
+                    </Text>
+                    {
+                        labels.map((label) => (
+                            <Text
+                                key={label.mid}
+                                style={styles.outputtext}
+                            >
+                                {label.description}
+                            </Text>
+                        ))
+                    }
                 </View>
             )
       }

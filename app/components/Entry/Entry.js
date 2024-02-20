@@ -15,13 +15,14 @@ const Entry = (props) => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#FFF',
-    padding: 15,
+    backgroundColor: '#9290B4',
+    padding: 10,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 10,
+    zIndex: 3
   },
   itemLeft: {
     flexDirection: 'row',
@@ -29,15 +30,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   square: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     backgroundColor: '#55BCF6',
-    opacity: 0.4,
-    borderRadius: 5,
     marginRight: 15,
+    borderRadius: 5,
+    opacity: 0.4, 
   },
   itemText: {
     maxWidth: '80%',
+    color: '#110C48'
   },
 });
 
